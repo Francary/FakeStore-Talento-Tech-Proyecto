@@ -1,19 +1,17 @@
 import express from 'express'
+import { getAllProducts,getProductsById,createProducts,updateProdcts,deleteProducts } from '../controllers/products.controller.js'
 
 const productsRouter = express.Router()
 
-productsRouter.get('/products', (req , res) =>{
+productsRouter.get('/products', getAllProducts)
 
-    res.send('Listado de Productos')
-})
+productsRouter.get('/products/:id' ,getProductsById)
 
-productsRouter.get('/products/:id' , (req , res) => {
-    res.send(`Producto con id ${req.params.id}` )
-})
+productsRouter.post('/products' , createProducts)
 
-productsRouter.post('/products' , (req , res) => {
-    res.send(`Producto Creado`)
-})
+productsRouter.put('/products/:id' , updateProdcts)
+
+productsRouter.delete('/products/:id' , deleteProducts)
 
 export{
     productsRouter

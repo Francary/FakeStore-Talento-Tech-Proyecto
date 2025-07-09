@@ -22,23 +22,10 @@ app.use(express.json())
 
 const PORT = 3000
 
-const products = [
-    { id: 1, name: 'Intel 9 Ultra', price: 100 },
-    { id: 2, name: 'Tarjeta Madre', price: 200 },
-    { id: 3, name: 'Fuente de Poder Modular', price: 300 }
-]
-
 app.get('/',(req, res) =>{
     res.send('<h1>Hola Mundo desde MI API</h1>')
 })
 
-
-app.get('/products/search', (req , res ) => {
-    const {name }  = req.query
-    const filterProducts = products.filter((intem) => intem.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()))
-    // console.log(req.query);
-     res.json(filterProducts)   
-})
 
 app.use('/api', productsRouter)
 
