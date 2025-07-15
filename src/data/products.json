@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Intel 9 Ultra",
+    "price": 100
+  },
+  {
+    "id": 2,
+    "name": "Tarjeta Madre",
+    "price": 200
+  },
+  {
+    "id": 3,
+    "name": "Fuente de Poder Modular",
+    "price": 300
+  },
+  {
+    "id": 4,
+    "name": "Memoria RAM 32GB DDR5",
+    "price": 80
+  },
+  {
+    "id": 5,
+    "name": "Disco SSD 1TB NVMe",
+    "price": 150
+  },
+  {
+    "id": 6,
+    "name": "Tarjeta de Video RTX 5060",
+    "price": 600
+  },
+  {
+    "id": 10,
+    "name": "Gabinete",
+    "price": 150
+  },
+  {
+    "id": 11,
+    "name": "Gabinete",
+    "price": 150
+  },
+  {
+    "id": 10,
+    "name": "Gabinete",
+    "price": 150
+  }
+]

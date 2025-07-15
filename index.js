@@ -8,16 +8,17 @@ const app = express()
 app.use(cors())
 
 /*Configuración avanzada: Permitir dominios específicos*/
-
 const corsOptions = {
     origin: ['https://example.com', 'https://anotherdomain.com'],
     methods:['GET', 'POST', 'PUT', 'DELETE' ],
     allowedHearders:['Content-Type' , 'Authorization' ],
     credentials: true
 }
-app.use(cors(corsOptions))
-/*  Middelware parar capturar req.body*/
 
+app.use(cors(corsOptions))
+
+
+/*  Middelware parar capturar req.body*/
 app.use(express.json())
 
 const PORT = 3000

@@ -4,14 +4,16 @@ const products = [
     { id: 3, name: 'Fuente de Poder Modular', price: 300 }
 ]
 
+import {  getAllProductsModels,  getProductsByIdModels, createProductsModels, deleteProductsModels, } from '../models/products.model.js'
 
 const getAllProducts = async (req, res) => {
+    const products = await getAllProductsModels()
     res.status(200).json(products)     
 }
 
 const getProductsById = async (req , res ) =>{
     const {id} = req.params
-    const product = products.find(item => item.id == id)
+    const product = await getProductsByIdModels(id)
     if (!product){
         res.status(404).json( {error:` Producto ${id} que solicitaste no existe`})
     }
@@ -21,13 +23,7 @@ const getProductsById = async (req , res ) =>{
 
 const createProducts = (req , res ) =>{
     const { name ,price } = req.body
-
-    const newProducts = {
-        id: products.length + 1,
-        name,
-        price
-    }
-    products.push(newProducts)
+    const newProducts = createProductsModels(name, price)
     res.status(201).json(newProducts)
 }
 
@@ -46,14 +42,20 @@ const updateProdcts = (req , res ) => {
 
 
 const deleteProducts = (req, res) => {
-    const productId = parseInt(req.params.id, 10 )
-    const productIndex = products.findIndex((item) => item.id === productId)
-    if(productIndex === -1 ){
+    const id = parseInt(req.params.id, 10)
+    const product = deleteProductsModels(id)
+    if(!product){
         return res.status(404).json({error: 'Producto no Encontrado'})
     }
-    products.splice(productIndex, 1)
+    
     res.status(204).json(`Producto Eliminado Exitosamente`)
 
+}
+
+const searchProducts = (req , res ) => {
+    const {name }  = req.query
+    const filterProducts = products.filter((intem) => intem.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()))
+    res.json(filterProducts)   
 }
 
 export {
@@ -61,5 +63,7 @@ export {
     getProductsById,
     createProducts,
     updateProdcts,
-    deleteProducts
+    deleteProducts,
+    searchProducts
+
 }
