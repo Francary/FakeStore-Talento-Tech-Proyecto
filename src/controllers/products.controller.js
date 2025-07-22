@@ -4,7 +4,7 @@ const products = [
     { id: 3, name: 'Fuente de Poder Modular', price: 300 }
 ]
 
-import {  getAllProductsModels,  getProductsByIdModels, createProductsModels, deleteProductsModels, } from '../models/products.model.js'
+import {  getAllProductsModels,  getProductsByIdModels, createProductsModels, deleteProductsModels, searchProductsModels, } from '../models/products.model.js'
 
 const getAllProducts = async (req, res) => {
     const products = await getAllProductsModels()
@@ -43,19 +43,19 @@ const updateProdcts = (req , res ) => {
 
 const deleteProducts = (req, res) => {
     const id = parseInt(req.params.id, 10)
-    const product = deleteProductsModels(id)
+    const product = deleteProductsModels(id)   
     if(!product){
         return res.status(404).json({error: 'Producto no Encontrado'})
     }
     
-    res.status(204).json(`Producto Eliminado Exitosamente`)
+    res.status(200).json(product)
 
 }
 
 const searchProducts = (req , res ) => {
-    const {name }  = req.query
-    const filterProducts = products.filter((intem) => intem.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()))
-    res.json(filterProducts)   
+    const {name} = req.query 
+     const search = searchProductsModels(name)
+      res.json(search)
 }
 
 export {

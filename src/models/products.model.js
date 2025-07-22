@@ -43,9 +43,18 @@ const deleteProductsModels = (id) =>{
 
 }
 
+const searchProductsModels =  (name) => {
+    const products = getAllProductsModels()
+    
+     const filterProducts = products.filter((item) => item.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()))
+    
+    return filterProducts  
+}
+
 export {
     getAllProductsModels,
     getProductsByIdModels,
     createProductsModels,
     deleteProductsModels,
+    searchProductsModels
 }

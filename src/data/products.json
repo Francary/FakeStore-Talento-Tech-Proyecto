@@ -28,20 +28,5 @@
     "id": 6,
     "name": "Tarjeta de Video RTX 5060",
     "price": 600
-  },
-  {
-    "id": 10,
-    "name": "Gabinete",
-    "price": 150
-  },
-  {
-    "id": 11,
-    "name": "Gabinete",
-    "price": 150
-  },
-  {
-    "id": 10,
-    "name": "Gabinete",
-    "price": 150
   }
 ]
