@@ -1,3 +1,4 @@
+import "dotenv/config"
 import express from 'express'
 import cors from 'cors'
 import { productsRouter } from './src/routes/products.routes.js'
@@ -21,7 +22,7 @@ app.use(cors(corsOptions))
 /*  Middelware parar capturar req.body*/
 app.use(express.json())
 
-const PORT = 3000
+const PORT = process.env.PORT 
 
 app.get('/',(req, res) =>{
     res.send('<h1>Hola Mundo desde MI API</h1>')

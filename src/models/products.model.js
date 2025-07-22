@@ -1,47 +1,72 @@
-import fs from 'fs'
-import path from 'path'
+import { db } from '../firebase/firebase.js'
+import { collection , getDoc, getDocs , doc , addDoc, deleteDoc , setDoc} from 'firebase/firestore'
 
-const __dirname = import.meta.dirname
-
-const dataPath = path.join(__dirname , '../data/products.json')
+const productsCollection = collection(db , "productos")
 
 
-const getAllProductsModels = () => {
-    const data = fs.readFileSync(dataPath, 'utf-8')
-    return JSON.parse(data)
+/* Consulta todos los productos a FireBase */
+const getAllProductsModels = async () => {
+   try {
+    const snapshot = await getDocs(productsCollection)
+    return snapshot.docs.map((doc) => ({id: doc.id , ...doc.data()}))
+   } catch (error) {
+    console.error(error)
+   }
 }
 
-const getProductsByIdModels = (id) => {
-    const products = getAllProductsModels()
-    return products.find(item => item.id == id)
+/* Consulta un producto por ID a FireBase */
+const getProductsByIdModels = async (id) => {
+    try {
+        const productRef = doc(productsCollection, id)
+        const snapshot = await getDoc(productRef)
+        return snapshot.exists() ? { id: snapshot.id, ...snapshot.data()} : null;
+    } catch (error) {
+        console.error(error)
+    } 
 }
 
-const createProductsModels = ( name , price) => {
-    const products = getAllProductsModels()
-    const newProducts = {
-            id: products.length + 1 ,
-            name,
-            price
-        }
-    products.push(newProducts)     
-
-    fs.writeFileSync(dataPath, JSON.stringify(products,null,2))
-    return newProducts
+/* Crear un nuevo producto en FireBase */
+const createProductsModels = async ( data) => {
+ try {
+  const docRef = await addDoc(productsCollection, data)
+  return { id: docRef.id , ...data}
+ } catch (error) {
+    console.error(error)
+ }
 }
 
-const deleteProductsModels = (id) =>{
-    const products = getAllProductsModels()
-    const productIndex = products.findIndex(item => item.id === id)
+/* Eliminar un producto en FireBase*/
+const deleteProductsModels = async (id) => {
+try {
+    const productRef = doc(productsCollection, id)
+    const snapshot = await getDoc(productRef)
 
-    if(productIndex == -1 ){
-        return null
-    }else{
-        const product = products.splice(productIndex, 1)
-        fs.writeFileSync(dataPath , JSON.stringify(products , null , 2))
-        return product
+    if(!snapshot.exists()){
+        return false
     }
 
+    await deleteDoc(productRef)
+    return true
+} catch (error) {
+    console.error(error)
 }
+}
+
+/* Editar un producto en FireBase*/
+const updateProductsModels = async ( id , data) => {
+    try {
+        const productRef = doc(productsCollection , id)
+        const snapshot = await getDoc(productRef)
+        if(!snapshot.exists()){
+            return false
+        }
+        await setDoc(productRef, data)
+        return {id , ...data}
+    } catch (error) {
+       console.error(error) 
+    }
+}
+
 
 const searchProductsModels =  (name) => {
     const products = getAllProductsModels()
@@ -56,5 +81,7 @@ export {
     getProductsByIdModels,
     createProductsModels,
     deleteProductsModels,
+    updateProductsModels,
+
     searchProductsModels
 }

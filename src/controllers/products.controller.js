@@ -1,16 +1,12 @@
-const products = [
-    { id: 1, name: 'Intel 9 Ultra', price: 100 },
-    { id: 2, name: 'Tarjeta Madre', price: 200 },
-    { id: 3, name: 'Fuente de Poder Modular', price: 300 }
-]
+import {  getAllProductsModels,  getProductsByIdModels, createProductsModels, deleteProductsModels, updateProductsModels, searchProductsModels, } from '../models/products.model.js'
 
-import {  getAllProductsModels,  getProductsByIdModels, createProductsModels, deleteProductsModels, searchProductsModels, } from '../models/products.model.js'
-
+/*Funciona*/
 const getAllProducts = async (req, res) => {
     const products = await getAllProductsModels()
     res.status(200).json(products)     
 }
 
+/*Funciona*/
 const getProductsById = async (req , res ) =>{
     const {id} = req.params
     const product = await getProductsByIdModels(id)
@@ -18,38 +14,35 @@ const getProductsById = async (req , res ) =>{
         res.status(404).json( {error:` Producto ${id} que solicitaste no existe`})
     }
     res.json(product)
-    
 }
 
-const createProducts = (req , res ) =>{
-    const { name ,price } = req.body
-    const newProducts = createProductsModels(name, price)
+/*Funciona*/
+const createProducts = async (req , res ) =>{
+    const { name ,price , Categoria , description} = req.body
+    const newProducts = await createProductsModels({name, price, Categoria , description})
     res.status(201).json(newProducts)
 }
 
-
-const updateProdcts = (req , res ) => {
-    const productId = parseInt(req.params.id, 10 )
-    const productIndex = products.findIndex((item) => item.id === productId)
-    if(productIndex === -1 ){
-        return res.status(404).json({error: 'Producto no Encontrado'})
-    }
-
-    const {name , price} = req.body
-    products[productIndex] = {id: productId , name, price}
-    res.json(products[productIndex])
-}
-
-
-const deleteProducts = (req, res) => {
-    const id = parseInt(req.params.id, 10)
-    const product = deleteProductsModels(id)   
+/*Funciona*/
+const deleteProducts = async (req, res) => {
+    const id = req.params.id
+    const product = await deleteProductsModels(id)   
     if(!product){
         return res.status(404).json({error: 'Producto no Encontrado'})
     }
-    
     res.status(200).json(product)
 
+}
+
+/*Funciona*/
+const updateProdcts = async (req , res ) => {
+    const id = req.params.id
+    const data = req.body
+    const product = await updateProductsModels(id , data)
+    if(!product){
+        return res.status(404).json({error: 'Producto no Encontrado'})
+    }
+    res.status(200).json(product)
 }
 
 const searchProducts = (req , res ) => {
