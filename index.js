@@ -12,14 +12,14 @@ const PORT = process.env.PORT
 app.use(cors())
 
 /*Configuración avanzada: Permitir dominios específicos*/
-const corsOptions = {
-    origin: ['https://fake-store-talento-tech-proyecto.vercel.app'],
-    methods:['GET', 'POST', 'PUT', 'DELETE' ],
-    allowedHearders:['Content-Type' , 'Authorization' ],
-    credentials: true
-}
+// const corsOptions = {
+//     origin: ['https://fake-store-talento-tech-proyecto.vercel.app'],
+//     methods:['GET', 'POST', 'PUT', 'DELETE' ],
+//     allowedHearders:['Content-Type' , 'Authorization' ],
+//     credentials: true
+// }
 
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 
 /*  Middelware parar capturar req.body*/
