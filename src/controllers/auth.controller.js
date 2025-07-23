@@ -1,33 +1,28 @@
 import jwt from 'jsonwebtoken'
-import fs from 'fs'
-import path from 'path'
+import {getAllUsersModels} from '../models/users.model.js'
 
-const __dirname = import.meta.dirname
+const loginController = async (req, res) => {
+    const { email, password } = req.body
 
-const dataPath = path.join(__dirname , '../data/users.json')
+    try {
+        const users = await getAllUsersModels()
+         
+        const userFound = users.find(user => user.email === email && user.password === password)
 
-const getAllUsers = () => {
-    const data = fs.readFileSync(dataPath, 'utf-8')
-       
-    return JSON.parse(data)
-}
-
-
-const loginController =  (req , res) =>{
-
-    const {email, password} = req.body
-    const users= getAllUsers()  
-    const userFound = users.find(user => user.email === email && user.password === password)
-    
-    if(userFound){
-        const payload = {email}
-        const expira = { expiresIn: "1h"}
-        const token = jwt.sign(payload, process.env.JWT_SECRET , expira)
-        return res.json({token})
-    }else{
-        return res.sendStatus(401)
+        if (userFound) {
+            const payload = { email }
+            const options = { expiresIn: "1h" }
+            const token = jwt.sign(payload, process.env.JWT_SECRET, options)
+            return res.json({ token })
+        } else {
+            return res.sendStatus(401)
+        }
+    } catch (error) {
+        console.error("Error al obtener usuarios:", error)
+        return res.status(500).json({ error: "Error interno del servidor" })
     }
 }
+
 
 export {
     loginController

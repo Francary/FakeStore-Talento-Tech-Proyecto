@@ -1,7 +1,7 @@
 import { db } from '../firebase/firebase.js'
 import { collection , getDoc, getDocs , doc , addDoc, deleteDoc , setDoc} from 'firebase/firestore'
 
-const productsCollection = collection(db , "productos")
+const productsCollection = collection(db , "products")
 
 
 /* Consulta todos los productos a FireBase */

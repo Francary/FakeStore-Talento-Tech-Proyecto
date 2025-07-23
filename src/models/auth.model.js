@@ -1,18 +1,20 @@
-import jwt from 'jsonwebtoken'
+/* NO LO ESTOY USANDO */
 
-const loginModel = async (req,res) =>{
-  const {email, password} = await req.body
-  try {
-    if(email== "admin@admin.com" && password == "admin123"){
-        const payload = {email, password}
-        const expira = { expiresIn: "1h"}
-        const token = jwt.sign(payload, process.env.JWT_SECRET , expira)
-        res.json({token})
-  }} catch (error) {
-    return res.sendStatus(401)
-  }    
-}
+// import jwt from 'jsonwebtoken'
 
-export {
-    loginModel
-}
+// const loginModel = async (req,res) =>{
+//   const {email, password} = await req.body
+//   try {
+//     if(email== "admin@admin.com" && password == "admin123"){
+//         const payload = {email, password}
+//         const expira = { expiresIn: "1h"}
+//         const token = jwt.sign(payload, process.env.JWT_SECRET , expira)
+//         res.json({token})
+//   }} catch (error) {
+//     return res.sendStatus(401)
+//   }    
+// }
+
+// export {
+//     loginModel
+// }
