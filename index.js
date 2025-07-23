@@ -33,7 +33,7 @@ app.get('/',(req, res) =>{
 })
 
 app.use('/api',loginRouter)
-app.use('/api',auth , productsRouter)
+app.use('/api' , productsRouter)
 
 /*Middleware para majenar errores 404*/
 app.use((req, res, next) =>{
