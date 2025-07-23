@@ -13,7 +13,7 @@ app.use(cors())
 
 /*Configuración avanzada: Permitir dominios específicos*/
 const corsOptions = {
-    origin: ['https://example.com', 'https://anotherdomain.com'],
+    origin: ['https://fake-store-talento-tech-proyecto.vercel.app'],
     methods:['GET', 'POST', 'PUT', 'DELETE' ],
     allowedHearders:['Content-Type' , 'Authorization' ],
     credentials: true
