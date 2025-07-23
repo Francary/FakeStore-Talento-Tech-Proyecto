@@ -25,3 +25,18 @@
 
 - Actualizar un producto:  
     `PUT /api/products/:id`
+
+- Crear un nuevo usuario:  
+    `POST /api/users`  
+  **Cuerpo del body:**
+
+  ```json
+  
+  {
+    "email": "admin@admin.com",
+    "password": "imposible",
+    "isAdmin": true
+  }
+
+- Consultar todos los usuarios:  
+    `GET /api/users`

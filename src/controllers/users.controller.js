@@ -1,3 +1,4 @@
+import bcrypt  from 'bcrypt'
 import { createUsersModels, getAllUsersModels } from "../models/users.model.js";
 
 /*Funciona*/
@@ -9,7 +10,14 @@ const getAllUsers = async (req, res) => {
 /*Funciona*/
 const createUsers = async (req , res) =>{
     const {email , password , isAdmin} = req.body
-    const newUsers = await createUsersModels({email,password,isAdmin})
+
+    const hashedPassword = await bcrypt.hash(password, 10)
+    
+    const newUsers = await createUsersModels({
+        email,
+        password: hashedPassword,
+        isAdmin,
+    })
     res.status(201).json(newUsers)
 
 }

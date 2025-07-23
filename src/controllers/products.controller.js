@@ -18,8 +18,8 @@ const getProductsById = async (req , res ) =>{
 
 /*Funciona*/
 const createProducts = async (req , res ) =>{
-    const { name ,price , Categoria , description} = req.body
-    const newProducts = await createProductsModels({name, price, Categoria , description})
+    const { name ,price , description , categoria} = req.body
+    const newProducts = await createProductsModels({name, price, description , categoria})
     res.status(201).json(newProducts)
 }
 
