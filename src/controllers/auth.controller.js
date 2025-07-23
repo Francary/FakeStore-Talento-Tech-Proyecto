@@ -15,10 +15,11 @@ const getAllUsers = () => {
 
 const loginController =  (req , res) =>{
 
-    const user = getAllUsers()  
     const {email, password} = req.body
+    const users= getAllUsers()  
+    const userFound = users.find(user => user.email === email && user.password === password)
     
-    if(email== user.email && password == user.password){
+    if(userFound){
         const payload = {email}
         const expira = { expiresIn: "1h"}
         const token = jwt.sign(payload, process.env.JWT_SECRET , expira)
