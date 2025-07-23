@@ -34,8 +34,8 @@ app.get('/',(req, res) =>{
 })
 
 app.use('/api' , usersRouter)
-app.use('/api', loginRouter)
-app.use('/api' , productsRouter)
+app.use('/api' , loginRouter)
+app.use('/api' , auth, productsRouter)
 
 /*Middleware para majenar errores 404*/
 app.use((req, res, next) =>{
