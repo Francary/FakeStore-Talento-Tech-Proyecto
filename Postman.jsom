@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "def6453f-4119-46c0-a5fb-9962028cd94f",
+		"name": "Talento Tech Vercel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29638611"
+	},
+	"item": [
+		{
+			"name": "products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenFakeStore}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/products/",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"products",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenFakeStore}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Teclado Mecanico XSOUL\",\r\n    \"price\": 200 ,\r\n    \"description\": \"¨Teclado Gamer\",\r\n    \"categoria\": [\"Gamer\", \"Computacion\"] \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/products",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenFakeStore}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/products/ijFELf2Plq1ys6m48c8J",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"products",
+						"ijFELf2Plq1ys6m48c8J"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenFakeStore}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Procesador AMD Modificado5\",\r\n    \"price\": 111 ,\r\n    \"description\": \"Marcar AMD\",\r\n    \"categoria\": [\"AMD\", \"GAMER\"] \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/products/ijFELf2Plq1ys6m48c8J",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"products",
+						"ijFELf2Plq1ys6m48c8J"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"email\": \"user@user.com\",\r\n    \"password\": \"imposible\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/login",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenFakeStore}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"email\":\"fran@user.com\",\r\n        \"password\":\"fran\",\r\n        \"isAdmin\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/users",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{tokenFakeStore}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 2,\r\n        \"email\":\"user@user.com\",\r\n        \"password\":\"user123\",\r\n        \"isAdmin\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://fake-store-talento-tech-proyecto.vercel.app/api/users",
+					"protocol": "https",
+					"host": [
+						"fake-store-talento-tech-proyecto",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
