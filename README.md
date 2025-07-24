@@ -1,7 +1,7 @@
 # API REST en Node.js
 
 ## JSON POSTMAN
-- [JSON DE POSTMAN](https://github.com/Francary/FakeStore-Talento-Tech-Proyecto/blob/master/Postman.json)
+- [JSON DE POSTMAN](https://github.com/Francary/FakeStore-Talento-Tech-Proyecto/blob/master/Postman.jsom)
 
 ## RUTAS
 
